@@ -37,10 +37,14 @@ function mulai() {
   const container = document.querySelector(".grid-content");
   const title = document.getElementById("title");
   const desc = document.getElementById("description");
+  const items = container.querySelectorAll("[data-id]");
 
   container.addEventListener("click", function (event) {
     const target = event.target.closest("[data-id]");
     if (!target) return;
+
+    items.forEach((item) => item.classList.remove("active"));
+    target.classList.add("active");
 
     const id = target.getAttribute("data-id");
     const sectorData = data[id];
